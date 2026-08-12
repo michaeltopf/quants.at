@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>quants.at — counting before believing</title>
+    <title>quants.at — Fewer stories. Better math.</title>
     <style>
         :root {
             --bg: #fafafa;
@@ -84,7 +84,25 @@
             color: var(--muted);
             font-size: 1.05rem;
             line-height: 1.5;
-            margin-bottom: 0.4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .post-image-link {
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .post-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 2px;
+            opacity: 0.95;
+            transition: opacity 0.2s ease;
+        }
+
+        .post-image:hover {
+            opacity: 1;
         }
 
         .post-date {
@@ -104,7 +122,16 @@
         <ul class="post-list">
             <li class="post-item">
                 <a class="post-title" href="/the-fund-manager.html">The Fund Manager</a>
-                <div class="post-excerpt">"The price does not matter," he said. "The money is heavy. If you hold it, it rots."</div>
+                
+                <div class="post-excerpt">
+                    "The price does not matter," he said. "The money is heavy. If you hold it, it rots."
+                </div>
+
+                <!-- Clickable Image -->
+                <a href="/the-fund-manager.html" class="post-image-link">
+                    <img src="/fund-manager.jpg" alt="The Fund Manager" class="post-image">
+                </a>
+
                 <div class="post-date">August 12, 2026</div>
             </li>
         </ul>
