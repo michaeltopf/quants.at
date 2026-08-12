@@ -1,30 +1,114 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quants.at — counting before believing</title>
+    <style>
+        :root {
+            --bg: #fafafa;
+            --text: #1a1a1a;
+            --muted: #666666;
+            --border: #e2e2e2;
+            --accent: #000000;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-serif: "Georgia", "Cambria", serif;
+        }
 
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --text: #e0e0e0;
+                --muted: #a0a0a0;
+                --border: #2a2a2a;
+                --accent: #ffffff;
+            }
+        }
 
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-sans);
+            padding: 3rem 1.5rem;
+            max-width: 640px;
+            margin: 0 auto;
+            -webkit-font-smoothing: antialiased;
+        }
 
+        header {
+            margin-bottom: 4rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+        }
 
-    
-    
-    quants.at — counting before believing
-    
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+        }
 
+        .tagline {
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
 
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
 
-    
-        quants.at
-        Counting before believing
-    
+        .post-item {
+            margin-bottom: 2.5rem;
+        }
 
-    
-        
-          {% for post in site.posts %}
-            
-              {{ post.title }}
-              {% if post.excerpt %}
-                {{ post.excerpt }}
-              {% endif %}
-              {{ post.date | date: "%B %d, %Y" }}
-            
-          {% endfor %}
+        .post-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 400;
+            text-decoration: none;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .post-title:hover {
+            text-decoration: underline;
+        }
+
+        .post-excerpt {
+            font-family: var(--font-serif);
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.5;
+            margin-bottom: 0.4rem;
+        }
+
+        .post-date {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo">quants.at</a>
+        <div class="tagline">Counting before believing</div>
+    </header>
+
+    <main>
+        <ul class="post-list">
+            <li class="post-item">
+                <a class="post-title" href="/the-fund-manager.html">The Fund Manager</a>
+                <div class="post-excerpt">"The price does not matter," he said. "The money is heavy. If you hold it, it rots."</div>
+                <div class="post-date">August 12, 2026</div>
+            </li>
+        </ul>
+    </main>
+
+</body>
+</html>
