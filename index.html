@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUANTS.AT – Digital Intelligence & Analytics</title>
+    <title>quants.at — counting before believing</title>
     <style>
+        :root {
+            --bg: #fafafa;
+            --text: #1a1a1a;
+            --muted: #666666;
+            --border: #e2e2e2;
+            --accent: #000000;
+            --font-serif: "Georgia", "Cambria", "Times New Roman", serif;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --text: #e0e0e0;
+                --muted: #a0a0a0;
+                --border: #2a2a2a;
+                --accent: #ffffff;
+            }
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -12,268 +32,158 @@
         }
 
         body {
-            background-color: #0d0208;
-            color: #00ff66;
-            font-family: 'Courier New', Courier, monospace;
-            overflow: hidden;
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-serif);
+            font-size: 1.125rem;
+            line-height: 1.8;
+            padding: 2rem 1.25rem 5rem 1.25rem;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Matrix Canvas Background */
-        #matrix-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.85;
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
         }
 
-        /* Scanline Overlay for Retro CRT Effect */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                rgba(18, 16, 16, 0) 50%, 
-                rgba(0, 0, 0, 0.25) 50%
-            ), linear-gradient(
-                90deg,
-                rgba(255, 0, 0, 0.03),
-                rgba(0, 255, 0, 0.01),
-                rgba(0, 0, 255, 0.03)
-            );
-            background-size: 100% 3px, 6px 100%;
-            z-index: 2;
-            pointer-events: none;
+        header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 2rem;
+            margin-bottom: 3.5rem;
         }
 
-        /* Main Glassmorphism Card */
-        .content-card {
-            position: relative;
-            z-index: 3;
-            background: rgba(10, 25, 15, 0.8);
-            border: 1px solid #00ff66;
-            box-shadow: 0 0 25px rgba(0, 255, 102, 0.35), inset 0 0 15px rgba(0, 255, 102, 0.15);
-            border-radius: 8px;
-            padding: 40px 30px;
-            max-width: 650px;
-            width: 90%;
-            text-align: center;
-            backdrop-filter: blur(5px);
-        }
-
-        .terminal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px dashed rgba(0, 255, 102, 0.4);
-            padding-bottom: 10px;
-            margin-bottom: 25px;
-            font-size: 0.85rem;
-            color: #00cc52;
-            letter-spacing: 1px;
-        }
-
-        .dots {
-            display: flex;
-            gap: 6px;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #00ff66;
-            box-shadow: 0 0 8px #00ff66;
-        }
-
-        /* Title Styling */
-        h1 {
-            font-size: 3rem;
-            letter-spacing: 6px;
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px #00ff66, 0 0 20px #00ff66;
-            color: #ffffff;
-        }
-
-        h1 span {
-            color: #00ff66;
-        }
-
-        /* Tagline / Terminal Text */
-        .tagline {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #a3ffc2;
-            margin-bottom: 30px;
-            min-height: 3.2em;
-            text-shadow: 0 0 5px rgba(0, 255, 102, 0.5);
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            background-color: #00ff66;
-            animation: blink 0.8s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* CTA Button */
-        .matrix-btn {
-            display: inline-block;
-            background: transparent;
-            color: #00ff66;
-            border: 2px solid #00ff66;
-            padding: 14px 32px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1rem;
-            font-weight: bold;
-            letter-spacing: 2px;
+        .logo {
+            font-family: var(--font-sans);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
             text-decoration: none;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            color: var(--muted);
             text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
-            cursor: pointer;
+            letter-spacing: 0.08em;
         }
 
-        .matrix-btn:hover {
-            background: #00ff66;
-            color: #0d0208;
-            box-shadow: 0 0 25px rgba(0, 255, 102, 0.8);
+        article header {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 2.5rem;
         }
 
-        .footer-status {
-            margin-top: 25px;
-            font-size: 0.75rem;
-            color: #00993d;
-            letter-spacing: 1px;
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 400;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; letter-spacing: 3px; }
-            .tagline { font-size: 0.95rem; }
-            .content-card { padding: 25px 20px; }
+        .date {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        p {
+            margin-bottom: 1.75rem;
+        }
+
+        p:last-of-type {
+            margin-bottom: 2.5rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 3.5rem 0;
+        }
+
+        footer {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.6;
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+        }
+
+        .attribution {
+            font-style: italic;
         }
     </style>
 </head>
 <body>
 
-    <!-- Canvas für den digitalen Regen -->
-    <canvas id="matrix-canvas"></canvas>
-    
-    <!-- CRT-Monitor Scanline Effect -->
-    <div class="overlay"></div>
+    <div class="container">
+        
+        <!-- Site Navigation / Header -->
+        <header>
+            <a href="/" class="logo">quants.at</a>
+            <div class="tagline">Counting before believing</div>
+        </header>
 
-    <!-- Content Box -->
-    <div class="content-card">
-        <div class="terminal-header">
-            <div class="dots">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
+        <!-- Main Article -->
+        <main>
+            <article>
+                <header>
+                    <h1>The Fund Manager</h1>
+                    <div class="date">August 2026</div>
+                </header>
+
+                <p>The espresso machine in the kitchen made a sharp, hissing sound. It was hot in the room, but the air conditioning kept the glass cold against his fingers.</p>
+
+                <p>He looked down at the street. Below the office, a man in a yellow vest was breaking up the asphalt with a pneumatic drill. The noise did not come through the double glass, but he could see the sweat on the man’s neck. The man worked hard. He worked by the hour.</p>
+
+                <p>On the desk, the terminal was blue. The numbers changed from green to white, then back to green.</p>
+
+                <p>A young man came into the office. He carried a leather folder and he stood straight because he was new and wanted to do well.</p>
+
+                <p>"The German paper cleared," the young man said. "Four hundred million."</p>
+
+                <p>"Good," he said. He did not look up from the blue screen.</p>
+
+                <p>"Do we keep it in short-term?"</p>
+
+                <p>"No," he said. "Get rid of it."</p>
+
+                <p>"The yields are low sir."</p>
+
+                <p>"Get rid of it anyway," he said. "Buy the apartments in Frankfurt. Or the timber land in Styria. Buy anything that has bark or stone."</p>
+
+                <p>The young man hesitated. He was sharp, and he had done very well at his university in London. "The price on the Frankfurt block is high. It’s thirty percent above the five-year average."</p>
+
+                <p>"The price does not matter," he said. "The money is heavy. If you hold it, it rots."</p>
+
+                <p>"Yes, sir," the young man said. He waited a moment, as if he wanted to ask a question about the market or the central bank in Frankfurt, but the older man sat very still, looking at the street below. The young man turned and went out, closing the door without a sound.</p>
+
+                <p>He picked up his espresso. It was cold now.</p>
+
+                <p>In the old days, when his father was alive, a million euros was a farm with three streams and a stone house that would stand for a hundred years. You could touch it. Now four hundred million was just a pulse of light that moved through a wire under the sea. It bought things, but it felt like drinking salt water. The more of it you had, the thirstier you were.</p>
+
+                <p>Down on the street, the man with the drill stopped working. He took off his hard hat and drank water from a plastic bottle. His face was red from the sun.</p>
+
+                <p>The fund manager watched him for a long time. He felt a quiet, dry pity for the man with the bottle, but he also felt something else that he did not like to name. He knew that when the man went home that night, the money in his pocket would be worth a little less than it was when he started drilling at seven in the morning. He had not done anything wrong. He had worked hard in the heat. But someone in a room somewhere had turned a key, and the water in his well had gone down an inch.</p>
+
+                <p>He set the empty cup on the mahogany desk. He picked up the telephone to call Zurich. The trade had to be made before five.</p>
+            </article>
+        </main>
+
+        <!-- Footer / Attribution -->
+        <footer>
+            <div class="attribution">
+                Written with Gemini. Stylistic theft courtesy of Ernest Hemingway.
             </div>
-            <div>SYS_STATUS: ONLINE</div>
-        </div>
+        </footer>
 
-        <h1>QUANTS<span>.AT</span></h1>
-
-        <p class="tagline">
-            <span id="typed-text"></span><span class="cursor">&nbsp;</span>
-        </p>
-
-        <a href="mailto:office@quants.at" class="matrix-btn">[ INITIALIZE_CONTACT ]</a>
-
-        <div class="footer-status">
-            LOC: AT_NODE_01 // SECURE_CONNECTION
-        </div>
     </div>
 
-    <script>
-        // Matrix Rain Setup
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        const baseChars = '012345678901234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        const fontSize = 16;
-        let columns = Math.floor(canvas.width / fontSize);
-        let drops = Array(columns).fill(1);
-
-        function getRandomChar() {
-            // Mit einer bestimmten Wahrscheinlichkeit die Buchstaben Q, U, A, N, T einstreuen
-            const quantLetters = ['Q', 'U', 'A', 'N', 'T'];
-            if (Math.random() < 0.18) {
-                return quantLetters[Math.floor(Math.random() * quantLetters.length)];
-            }
-            return baseChars[Math.floor(Math.random() * baseChars.length)];
-        }
-
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(13, 2, 8, 0.08)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.font = fontSize + 'px monospace';
-
-            for (let i = 0; i < drops.length; i++) {
-                const char = getRandomChar();
-                const x = i * fontSize;
-                const y = drops[i] * fontSize;
-
-                // Versteckter Clou: 'QUANT'-Buchstaben leuchten hellweiß heraus
-                if (['Q', 'U', 'A', 'N', 'T'].includes(char) && Math.random() < 0.35) {
-                    ctx.fillStyle = '#ffffff'; // Weißes Leuchten
-                    ctx.shadowColor = '#00ff66';
-                    ctx.shadowBlur = 12;
-                } else {
-                    ctx.fillStyle = '#00ff66'; // Standard Matrix Grün
-                    ctx.shadowBlur = 0;
-                }
-
-                ctx.fillText(char, x, y);
-
-                if (y > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-
-        setInterval(drawMatrix, 100);
-
-        // Typewriter Effect
-        const textToType = "Entering data stream... Decoding macroeconomic signals, financial models, and quantitative insights for Austria.";
-        let textIndex = 0;
-        const typedTextElement = document.getElementById('typed-text');
-
-        function typeWriter() {
-            if (textIndex < textToType.length) {
-                typedTextElement.innerHTML += textToType.charAt(textIndex);
-                textIndex++;
-                setTimeout(typeWriter, 35);
-            }
-        }
-
-        setTimeout(typeWriter, 500);
-    </script>
 </body>
 </html>
