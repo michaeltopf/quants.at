@@ -1,15 +1,150 @@
-<article class="post">
-  <p>If you tell the crowd that you are allocating capital to the nation's traditional industrial core, they will quote the morning paper. They will talk about energy costs, software write-downs, and foreign competition. They read headlines because reading headlines requires no effort.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Unopened Ledger — quants.at</title>
+    <style>
+        :root {
+            --bg: #fafafa;
+            --text: #1a1a1a;
+            --muted: #666666;
+            --border: #e2e2e2;
+            --accent: #000000;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-serif: "Georgia", "Cambria", serif;
+        }
 
-  <p>They do not open the ledger.</p>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --text: #e0e0e0;
+                --muted: #a0a0a0;
+                --border: #2a2a2a;
+                --accent: #ffffff;
+            }
+        }
 
-  <p>I was taught in school that markets process all information instantly. Fama heard an efficient machine. Shiller heard a crowd humming a tune it couldn’t stop. Stockholm handed them the Nobel Prize for hearing opposite things in the exact same sound.</p>
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-sans);
+            padding: 3rem 1.5rem;
+            max-width: 640px;
+            margin: 0 auto;
+            -webkit-font-smoothing: antialiased;
+        }
 
-  <p>Tonight, looking at the screen, Shiller is the one standing in the room.</p>
+        header {
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+        }
 
-  <p>The math requires no special training. The ledger shows two hundred billion euros in equity[cite: 1]. Over two decades, ordinary operations generated tens of billions in cash dividends while the equity under the roof kept expanding[cite: 1]. Tonight, the entire enterprise can be bought on the exchange for forty billion[cite: 1]. The dividend payout alone covers seven percent of that entry price, with retained earnings compounding quietly behind it.</p>
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+        }
 
-  <p>You are being offered a mansion for eighty percent less than the cost of its bricks and mortar, simply because the crowd outside is complaining about the weather.</p>
+        .tagline {
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
 
-  <p>The price can stay broken for a long time. Months. Years. Rationality is not required on a daily tape, and crowds can sing for as long as they like. But arithmetic has no memory of headlines, and eventual reality does not require anyone's permission. I don't need the price to be right. I need it to keep paying me while it's wrong.</p>
-</article>
+        .post-header {
+            margin-bottom: 2rem;
+        }
+
+        .post-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.25;
+            color: var(--accent);
+            margin: 0 0 0.5rem 0;
+        }
+
+        .post-date {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 2px;
+            margin: 2rem 0 2.5rem 0;
+        }
+
+        .post-content p {
+            font-family: var(--font-serif);
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo">quants.at</a>
+        <div class="tagline">Fewer stories. Better math.</div>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1 class="post-title">The Unopened Ledger</h1>
+                <div class="post-date">August 13, 2026</div>
+            </header>
+
+            <img src="./the_unopened_ledger.png" alt="The Unopened Ledger" class="hero-image">
+
+            <div class="post-content">
+                <p>If you tell the crowd that you are allocating capital to the nation's traditional industrial core, they will quote the morning paper. They will talk about energy costs, software write-downs, and foreign competition. They read headlines because reading headlines requires no effort.</p>
+
+                <p>They do not open the ledger.</p>
+
+                <p>I was taught in school that markets process all information instantly. Fama heard an efficient machine. Shiller heard a crowd humming a tune it couldn’t stop. Stockholm handed them the Nobel Prize for hearing opposite things in the exact same sound.</p>
+
+                <p>Tonight, looking at the screen, Shiller is the one standing in the room.</p>
+
+                <p>The math requires no special training. The ledger shows two hundred billion euros in equity. Over two decades, ordinary operations generated tens of billions in cash dividends while the equity under the roof kept expanding. Tonight, the entire enterprise can be bought on the exchange for forty billion. The dividend payout alone covers seven percent of that entry price, with retained earnings compounding quietly behind it.</p>
+
+                <p>You are being offered a mansion for eighty percent less than the cost of its bricks and mortar, simply because the crowd outside is complaining about the weather.</p>
+
+                <p>The price can stay broken for a long time. Months. Years. Rationality is not required on a daily tape, and crowds can sing for as long as they like. But arithmetic has no memory of headlines, and eventual reality does not require anyone's permission. I don't need the price to be right. I need it to keep paying me while it's wrong.</p>
+            </div>
+
+            <a href="/" class="back-link">&larr; Back to all pieces</a>
+        </article>
+    </main>
+
+    <footer>
+        <div style="font-size: 0.8rem; color: var(--muted); margin-top: 4rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+            <a href="/impressum.html" style="color: var(--muted); text-decoration: none;">Impressum</a>
+        </div>
+    </footer>
+
+</body>
+</html>
